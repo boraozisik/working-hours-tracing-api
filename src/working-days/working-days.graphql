@@ -1,0 +1,32 @@
+scalar DateTime
+
+type WorkingDay {
+  id: Int!
+  day: Int!
+  name: String!
+  email: String!
+  mobile: String
+  company: String
+  message: String
+  exitedAt: DateTime
+}
+
+input CreateWorkingDayInput {
+  id: Int!
+  day: Int!
+  name: String!
+  email: String!
+  mobile: String
+  company: String
+  message: String
+  exitedAt: DateTime
+}
+
+type Query {
+  workingDays: [WorkingDay]!
+  workingDay(id: Int!): WorkingDay
+}
+
+type Mutation {
+  createWorkingDay(createWorkingDayInput: CreateWorkingDayInput!): WorkingDay!
+}
