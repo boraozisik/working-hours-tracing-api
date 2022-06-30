@@ -2,6 +2,7 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { WorkingDaysService } from './working-days.service';
 import { CreateWorkingDayInput } from './dto/create-working-day.input';
 import { UpdateWorkingDayInput } from './dto/update-working-day.input';
+import { Prisma } from '@prisma/client';
 
 @Resolver('WorkingDay')
 export class WorkingDaysResolver {
@@ -9,7 +10,8 @@ export class WorkingDaysResolver {
 
   @Mutation('createWorkingDay')
   create(
-    @Args('createWorkingDayInput') createWorkingDayInput: CreateWorkingDayInput,
+    @Args('createWorkingDayInput')
+    createWorkingDayInput: Prisma.WorkingDayCreateInput,
   ) {
     return this.workingDaysService.create(createWorkingDayInput);
   }
@@ -21,6 +23,6 @@ export class WorkingDaysResolver {
 
   @Query('workingDay')
   findOne(@Args('id') id: number) {
-    return this.workingDaysService.findOne(id);
+    return this.workingDaysService.findOne({ id });
   }
 }
