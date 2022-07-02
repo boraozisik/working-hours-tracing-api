@@ -20,9 +20,13 @@ input CreateWorkingDayInput {
   message: String
   exitedAt: DateTime
 }
+input OrderByParams {
+  field: String
+  direction: String
+}
 
 type Query {
-  workingDays: [WorkingDay]!
+  workingDays(orderBy: OrderByParams): [WorkingDay]!
   workingDay(id: Int!): WorkingDay
 }
 

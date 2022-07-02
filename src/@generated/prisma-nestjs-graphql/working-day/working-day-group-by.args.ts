@@ -1,0 +1,51 @@
+import { Field } from '@nestjs/graphql';
+import { ArgsType } from '@nestjs/graphql';
+import { WorkingDayWhereInput } from './working-day-where.input';
+import { Type } from 'class-transformer';
+import { WorkingDayOrderByWithAggregationInput } from './working-day-order-by-with-aggregation.input';
+import { WorkingDayScalarFieldEnum } from './working-day-scalar-field.enum';
+import { WorkingDayScalarWhereWithAggregatesInput } from './working-day-scalar-where-with-aggregates.input';
+import { Int } from '@nestjs/graphql';
+import { WorkingDayCountAggregateInput } from './working-day-count-aggregate.input';
+import { WorkingDayAvgAggregateInput } from './working-day-avg-aggregate.input';
+import { WorkingDaySumAggregateInput } from './working-day-sum-aggregate.input';
+import { WorkingDayMinAggregateInput } from './working-day-min-aggregate.input';
+import { WorkingDayMaxAggregateInput } from './working-day-max-aggregate.input';
+
+@ArgsType()
+export class WorkingDayGroupByArgs {
+
+    @Field(() => WorkingDayWhereInput, {nullable:true})
+    @Type(() => WorkingDayWhereInput)
+    where?: WorkingDayWhereInput;
+
+    @Field(() => [WorkingDayOrderByWithAggregationInput], {nullable:true})
+    orderBy?: Array<WorkingDayOrderByWithAggregationInput>;
+
+    @Field(() => [WorkingDayScalarFieldEnum], {nullable:false})
+    by!: Array<keyof typeof WorkingDayScalarFieldEnum>;
+
+    @Field(() => WorkingDayScalarWhereWithAggregatesInput, {nullable:true})
+    having?: WorkingDayScalarWhereWithAggregatesInput;
+
+    @Field(() => Int, {nullable:true})
+    take?: number;
+
+    @Field(() => Int, {nullable:true})
+    skip?: number;
+
+    @Field(() => WorkingDayCountAggregateInput, {nullable:true})
+    _count?: WorkingDayCountAggregateInput;
+
+    @Field(() => WorkingDayAvgAggregateInput, {nullable:true})
+    _avg?: WorkingDayAvgAggregateInput;
+
+    @Field(() => WorkingDaySumAggregateInput, {nullable:true})
+    _sum?: WorkingDaySumAggregateInput;
+
+    @Field(() => WorkingDayMinAggregateInput, {nullable:true})
+    _min?: WorkingDayMinAggregateInput;
+
+    @Field(() => WorkingDayMaxAggregateInput, {nullable:true})
+    _max?: WorkingDayMaxAggregateInput;
+}

@@ -4,6 +4,14 @@
 generator client {
   provider = "prisma-client-js"
 }
+generator nestgraphql {
+  provider               = "node node_modules/prisma-nestjs-graphql"
+  output                 = "../src/@generated/prisma-nestjs-graphql"
+  fields_Validator_from  = "class-validator"
+  fields_Validator_input = true
+}
+
+
 
 datasource db {
   provider = "sqlite"
@@ -14,7 +22,9 @@ model WorkingDay {
   id Int @id @default(autoincrement())
   day Int
   exitedAt DateTime @default(now())
+  /// @Validator.MinLength(3)
   name String
+  /// @Validator.IsEmail()
   email String
   mobile  String?
   message  String?

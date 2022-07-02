@@ -1,7 +1,8 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { WorkingDaysService } from './working-days.service';
-
+import { OrderByParams } from 'src/graphql';
 import { Prisma } from '@prisma/client';
+import { WorkingDayCreateInput } from 'src/@generated/prisma-nestjs-graphql/working-day/working-day-create.input';
 
 @Resolver('WorkingDay')
 export class WorkingDaysResolver {
@@ -10,14 +11,14 @@ export class WorkingDaysResolver {
   @Mutation('createWorkingDay')
   create(
     @Args('createWorkingDayInput')
-    createWorkingDayInput: Prisma.WorkingDayCreateInput,
+    createWorkingDayInput: WorkingDayCreateInput,
   ) {
     return this.workingDaysService.create(createWorkingDayInput);
   }
 
   @Query('workingDays')
-  findAll() {
-    return this.workingDaysService.findAll();
+  findAll(@Args('orderBy') orderBy?: OrderByParams) {
+    return this.workingDaysService.findAll(orderBy);
   }
 
   @Query('workingDay')

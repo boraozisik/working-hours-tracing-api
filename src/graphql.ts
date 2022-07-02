@@ -17,6 +17,11 @@ export class CreateWorkingDayInput {
     exitedAt?: Nullable<DateTime>;
 }
 
+export class OrderByParams {
+    field?: Nullable<string>;
+    direction?: Nullable<string>;
+}
+
 export class WorkingDay {
     id: number;
     day: number;
@@ -29,7 +34,7 @@ export class WorkingDay {
 }
 
 export abstract class IQuery {
-    abstract workingDays(): Nullable<WorkingDay>[] | Promise<Nullable<WorkingDay>[]>;
+    abstract workingDays(orderBy?: Nullable<OrderByParams>): Nullable<WorkingDay>[] | Promise<Nullable<WorkingDay>[]>;
 
     abstract workingDay(id: number): Nullable<WorkingDay> | Promise<Nullable<WorkingDay>>;
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
-
+import { OrderByParams } from 'src/graphql';
 @Injectable()
 export class WorkingDaysService {
   constructor(private prisma: PrismaService) {}
@@ -12,8 +12,11 @@ export class WorkingDaysService {
     });
   }
 
-  findAll() {
-    return this.prisma.workingDay.findMany();
+  findAll(orderBy?: OrderByParams) {
+    const { field = 'exitedAt', direction = 'desc' } = orderBy || {};
+    return this.prisma.workingDay.findMany({
+      orderBy: { [field]: direction },
+    });
   }
 
   findOne(workingDayWhereUniqueInput: Prisma.WorkingDayWhereUniqueInput) {
