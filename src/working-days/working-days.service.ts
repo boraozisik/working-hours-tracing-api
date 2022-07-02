@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
-import { CreateWorkingDayInput } from './dto/create-working-day.input';
-import { UpdateWorkingDayInput } from './dto/update-working-day.input';
 
 @Injectable()
 export class WorkingDaysService {
   constructor(private prisma: PrismaService) {}
 
-  create(createWorkingDayInput: CreateWorkingDayInput) {
-    return 'This action adds a new workingDay';
+  create(createWorkingDayInput: Prisma.WorkingDayCreateInput) {
+    return this.prisma.workingDay.create({
+      data: createWorkingDayInput,
+    });
   }
 
   findAll() {

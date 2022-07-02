@@ -12,7 +12,6 @@ type WorkingDay {
 }
 
 input CreateWorkingDayInput {
-  id: Int!
   day: Int!
   name: String!
   email: String!

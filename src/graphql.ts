@@ -8,7 +8,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export class CreateWorkingDayInput {
-    id: number;
     day: number;
     name: string;
     email: string;
