@@ -37,10 +37,20 @@ export abstract class IQuery {
     abstract workingDays(orderBy?: Nullable<OrderByParams>): Nullable<WorkingDay>[] | Promise<Nullable<WorkingDay>[]>;
 
     abstract workingDay(id: number): Nullable<WorkingDay> | Promise<Nullable<WorkingDay>>;
+
+    abstract totalWorkingHours(): number | Promise<number>;
 }
 
 export abstract class IMutation {
     abstract createWorkingDay(createWorkingDayInput: CreateWorkingDayInput): WorkingDay | Promise<WorkingDay>;
+}
+
+export class Result {
+    total: number;
+}
+
+export abstract class ISubscription {
+    abstract totalUpdated(): Nullable<Result> | Promise<Nullable<Result>>;
 }
 
 export type DateTime = any;

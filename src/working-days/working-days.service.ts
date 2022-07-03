@@ -24,4 +24,13 @@ export class WorkingDaysService {
       where: workingDayWhereUniqueInput,
     });
   }
+
+  async getTotal() {
+    const response = await this.prisma.workingDay.aggregate({
+      _sum: {
+        day: true,
+      },
+    });
+    return response._sum.day * 8;
+  }
 }

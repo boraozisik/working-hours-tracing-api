@@ -28,8 +28,17 @@ input OrderByParams {
 type Query {
   workingDays(orderBy: OrderByParams): [WorkingDay]!
   workingDay(id: Int!): WorkingDay
+  totalWorkingHours: Int!
 }
 
 type Mutation {
   createWorkingDay(createWorkingDayInput: CreateWorkingDayInput!): WorkingDay!
+}
+
+type Result {
+  total: Int!
+}
+
+type Subscription {
+  totalUpdated: Result
 }
