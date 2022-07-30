@@ -1,3 +1,8 @@
+# Working Hours Tracing API
+
+**This is an api for my application called workmind.Workmind's ui and more information about app is also in my repositories.**
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
